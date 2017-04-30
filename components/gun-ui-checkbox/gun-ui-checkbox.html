@@ -1,0 +1,98 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../gun-ui-mixin/gun-ui-mixin.html">
+<link rel="import" href="../paper-checkbox/paper-checkbox.html">
+<!--
+`gun-ui-checkbox`
+Part of the GunUi elements
+
+@demo demo/index.html
+-->
+
+<dom-module id="gun-ui-checkbox">
+  <template>
+    <style>
+      :host {display: block;}
+
+      paper-checkbox {
+        --paper-checkbox-unchecked-background-color:var(--gun-ui-checkbox-unchecked-background-color);
+        --paper-checkbox-unchecked-color:var(--gun-ui-checkbox-unchecked-color);
+        --paper-checkbox-unchecked-ink-color:var(--gun-ui-checkbox-unchecked-ink-colo);
+        --paper-checkbox-checked-color:var(--gun-ui-checkbox-checked-color);
+        --paper-checkbox-checked-ink-color:var(--gun-ui-checkbox-checked-ink-color);
+        --paper-checkbox-checkmark-color:var(--gun-ui-checkbox-checkmark-color);
+        --paper-checkbox-label-color:var(--gun-ui-checkbox-label-color);
+        --paper-checkbox-label-checked-color:var(--gun-ui-checkbox-label-checked-color);
+        --paper-checkbox-label-spacing:var(--gun-ui-checkbox-label-spacing);
+        --paper-checkbox-label:var(--gun-ui-checkbox-label);
+        --paper-checkbox-label-checked:var(g--gun-ui-checkbox-label-checked);
+        --paper-checkbox-error-color:var(--gun-ui-checkbox-error-color);
+        --paper-checkbox-size:var(--gun-ui-checkbox-size);
+        --paper-checkbox-ink-size:var(--gun-ui-checkbox-ink-size);
+        --paper-checkbox-margin:var(--gun-ui-checkbox-margin);
+        --paper-checkbox-vertical-align:var(--gun-ui-checkbox-vertical-align);
+      }
+    </style>
+    <paper-checkbox
+      disabled$="[[disabled]]"
+      noink$="[[noink]]"
+      checked$="{{checked}}"
+      on-change="_userAction">
+      <slot></slot>
+    </paper-checkbox>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'gun-ui-checkbox',
+
+      properties: {
+        disabled: {
+          type: Boolean,
+          value: false
+        },
+        noink:{
+          type: Boolean,
+          value: false
+        },
+        checked:{
+          type: Boolean,
+          value: false,
+        },
+
+      },
+      behaviors:[Polymer.GunUiMixin],
+      ready() {
+        this.subscribe ? this._subscribe() : this._getCurrent()
+      },
+       _subscribe() {
+        if(this.soul && this.prop) {
+         this._on({soul:this.soul,prop:this.prop},(c)=>{
+             this.checked = c ? c :false
+          })
+
+        } else {
+          console.warn('You have no soul and/or prop set !!');
+        };
+      },
+      _getCurrent(){
+       this._read({soul:this.soul,prop:this.prop})
+            .then( (value) => {
+              this.checked = value ? value:false;
+            })     
+      },
+      _userAction(e){
+        this.setValue(e.target.checked)
+       
+      },
+      /* update Gun */
+      setValue(val) {
+        if(this.soul) {
+          this._update({soul:this.soul,prop:this.prop,data:val})
+        };
+      },
+
+
+    });
+  </script>
+</dom-module>
