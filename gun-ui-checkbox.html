@@ -11,8 +11,25 @@ Part of the GunUi elements
 <dom-module id="gun-ui-checkbox">
   <template>
     <style>
-      :host {
-        display: block;
+      :host {display: block;}
+
+      paper-checkbox {
+        --paper-checkbox-unchecked-background-color:var(--gun-ui-checkbox-unchecked-background-color);
+        --paper-checkbox-unchecked-color:var(--gun-ui-checkbox-unchecked-color);
+        --paper-checkbox-unchecked-ink-color:var(--gun-ui-checkbox-unchecked-ink-colo);
+        --paper-checkbox-checked-color:var(--gun-ui-checkbox-checked-color);
+        --paper-checkbox-checked-ink-color:var(--gun-ui-checkbox-checked-ink-color);
+        --paper-checkbox-checkmark-color:var(--gun-ui-checkbox-checkmark-color);
+        --paper-checkbox-label-color:var(--gun-ui-checkbox-label-color);
+        --paper-checkbox-label-checked-color:var(--gun-ui-checkbox-label-checked-color);
+        --paper-checkbox-label-spacing:var(--gun-ui-checkbox-label-spacing);
+        --paper-checkbox-label:var(--gun-ui-checkbox-label);
+        --paper-checkbox-label-checked:var(g--gun-ui-checkbox-label-checked);
+        --paper-checkbox-error-color:var(--gun-ui-checkbox-error-color);
+        --paper-checkbox-size:var(--gun-ui-checkbox-size);
+        --paper-checkbox-ink-size:var(--gun-ui-checkbox-ink-size);
+        --paper-checkbox-margin:var(--gun-ui-checkbox-margin);
+        --paper-checkbox-vertical-align:var(--gun-ui-checkbox-vertical-align);
       }
     </style>
     <paper-checkbox
@@ -20,7 +37,7 @@ Part of the GunUi elements
       noink$="[[noink]]"
       checked$="{{checked}}"
       on-change="_userAction">
-      
+      <slot></slot>
     </paper-checkbox>
   </template>
 
@@ -41,7 +58,6 @@ Part of the GunUi elements
         checked:{
           type: Boolean,
           value: false,
-
         },
 
       },

@@ -34,6 +34,9 @@
      demo-box {
             min-width:300px;
           }
+                .row > gun-ui-checkbox {
+        margin:10px;
+      }
     </style>
 
     <gunui-demo-app>
@@ -57,12 +60,12 @@
           <div class="row">
             <demo-box>
               <template>
-                <gun-ui-checkbox  soul="demo" prop="check" subscribe></gun-ui-checkbox>
+                <gun-ui-checkbox soul="demo" prop="check" subscribe></gun-ui-checkbox>
               </template>
             </demo-box>
              <demo-box>
             <template>
-              <gun-ui-checkbox  soul="demo" prop="check" subscribe></gun-ui-checkbox>
+              <gun-ui-checkbox soul="demo" prop="check" subscribe></gun-ui-checkbox>
             </template>
           </demo-box>
           </div>
@@ -72,9 +75,11 @@
         <h3>Checkboxes can be checked or unchecked, or disabled entirely</h3>
         <demo-box>
         <template>
-          <gun-ui-checkbox>Checkbox</gun-ui-checkbox>
-          <gun-ui-checkbox checked>Checkbox</gun-ui-checkbox>
-          <gun-ui-checkbox disabled>Disabled</gun-ui-checkbox>
+        <div class="row">
+          <gun-ui-checkbox soul="demo" prop="check" subscribe>Checkbox</gun-ui-checkbox>
+          <gun-ui-checkbox checked soul="demo" prop="check" subscribe>Checkbox</gun-ui-checkbox>
+          <gun-ui-checkbox disabled soul="demo" prop="check" subscribe>Disabled</gun-ui-checkbox>
+        </div>
         </template>
 
         </demo-box>
@@ -84,7 +89,7 @@
           <h3>Checkboxes can hide the ripple effect using the <i>noink</i> attribute</h3>
         <demo-box>
         <template>
-          <gun-ui-checkbox noink>Checkbox</gun-ui-checkbox>
+          <gun-ui-checkbox noink soul="demo" prop="check" subscribe>Checkbox</gun-ui-checkbox>
         </template>
 
         </demo-box>
@@ -92,7 +97,6 @@
 
       <div class="vertical-section centered" id="start">
         <h3>Checkboxes can be styled using custom properties</h3>
-      </div>
       <demo-box>
          <template>
           <style is="custom-style">
@@ -128,6 +132,19 @@
               --gun-ui-checkbox-label-color: var(--paper-blue-500);
               --gun-ui-checkbox-label-checked-color: var(--paper-blue-900);
             }
+            gun-ui-checkbox.silver {
+              background: rgb(245,246,246); /* Old browsers */
+              background: -moz-linear-gradient(-45deg, rgba(245,246,246,1) 0%, rgba(219,220,226,1) 21%, rgba(184,186,198,1) 49%, rgba(221,223,227,1) 80%, rgba(245,246,246,1) 100%); /* FF3.6-15 */
+              background: -webkit-linear-gradient(-45deg, rgba(245,246,246,1) 0%,rgba(219,220,226,1) 21%,rgba(184,186,198,1) 49%,rgba(221,223,227,1) 80%,rgba(245,246,246,1) 100%); /* Chrome10-25,Safari5.1-6 */
+              background: linear-gradient(135deg, rgba(245,246,246,1) 0%,rgba(219,220,226,1) 21%,rgba(184,186,198,1) 49%,rgba(221,223,227,1) 80%,rgba(245,246,246,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+              filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f6f6', endColorstr='#f5f6f6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+              border:1px solid silver;
+              --gun-ui-checkbox-checked-color: silver;
+              --gun-ui-checkbox-unchecked-color:silver;
+              @apply(--shadow-elevation-3dp);
+              padding:5px;
+              --gun-ui-checkbox-label-color:black;
+            }
 
             gun-ui-checkbox .subtitle {
               display: block;
@@ -136,18 +153,25 @@
               max-width: 150px;
             }
           </style>
-
-          <gun-ui-checkbox class="red">
+          <div class="row">
+          <gun-ui-checkbox class="red" soul="demo" prop="check" subscribe>
             Checkbox
             <span class="subtitle">With a subtitle</span>
           </gun-ui-checkbox>
-          <gun-ui-checkbox checked class="green">
+          <gun-ui-checkbox checked class="green" soul="demo" prop="check" subscribe>
             Checkbox
             <span class="subtitle">
               With a longer subtitle that wraps to another line
             </span>
           </gun-ui-checkbox>
-          <gun-ui-checkbox class="blue">Checkbox</gun-ui-checkbox>
+           <gun-ui-checkbox checked class="silver" soul="demo" prop="check" subscribe>
+            Checkbox
+            <span class="subtitle">
+              With a longer subtitle that wraps to another line
+            </span>
+          </gun-ui-checkbox>
+          <gun-ui-checkbox class="blue" soul="demo" prop="check" subscribe>Checkbox</gun-ui-checkbox>
+          </div>
         </template>
       </demo-box>
 
