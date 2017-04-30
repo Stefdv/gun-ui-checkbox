@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <script src="https://rawgit.com/amark/gun/master/gun.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>gun-ui-checkbox</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script>
+      window.Polymer = window.Polymer || {};
+      window.Polymer.dom = 'shadow';
+      localStorage.clear()
+    </script>
+    <link rel="import" href="../../polymer/polymer.html">
+    <link rel="import" href="../../gunui-demo-app/gunui-demo-app.html">
+    <link rel="import" href="../../gunui-demo-app/demo/demo-imports.html">
+    <link rel="import" href="../gun-ui-checkbox.html">
+    <style is="custom-style" include="demo-shared-styles">
+          :root{ }
+          body{
+            overflow:hidden;
+          }
+         
+         
+    </style>
+    
+    
+  </head>
+  <body>
+  <prism-highlighter></prism-highlighter>
+    <style is="custom-style" include="demo-shared-styles">
+     demo-box {
+            min-width:300px;
+          }
+    </style>
+
+    <gunui-demo-app>
+      <!-- create pages -->
+      <div class="vertical-section centered" id="start">
+         <h3>What it does</h3>
+         <div class="row"><span>It's a &nbsp;</span><gun-ui-checkbox  soul="demo" prop="check" subscribe></gun-ui-checkbox><span>...that syncs</span>&nbsp;<gun-ui-checkbox  soul="demo" prop="check" subscribe></gun-ui-checkbox><span>  with Gun</span></div>
+      </div>
+    
+        <div class="vertical-section" id="instant">
+
+          <div class="demo-header">
+            <p>Both <prism-demo inline code="<gun-ui-checkbox>" lang="html"></prism-demo> elements are subscribed to the same property<br>( and the ones above )</p>
+             <blockquote>
+             The attributes <span class="attribute">soul</span> and <span class="attribute">prop</span> will link the element to a data-point.<br>
+             The attribute <span class="attribute">subscribe</span> is what makes it 'Gun-aware'
+             you can read more about it <demo-link href="?gunui#gun-awareness">here</demo-link>
+           </blockquote> 
+          
+          </div>
+          <div class="row">
+            <demo-box>
+              <template>
+                <gun-ui-checkbox  soul="demo" prop="check" subscribe></gun-ui-checkbox>
+              </template>
+            </demo-box>
+             <demo-box>
+            <template>
+              <gun-ui-checkbox  soul="demo" prop="check" subscribe></gun-ui-checkbox>
+            </template>
+          </demo-box>
+          </div>
+        </div>
+        
+      <div class="vertical-section centered" id="start">
+        <h3>Checkboxes can be checked or unchecked, or disabled entirely</h3>
+        <demo-box>
+        <template>
+          <gun-ui-checkbox>Checkbox</gun-ui-checkbox>
+          <gun-ui-checkbox checked>Checkbox</gun-ui-checkbox>
+          <gun-ui-checkbox disabled>Disabled</gun-ui-checkbox>
+        </template>
+
+        </demo-box>
+      </div>  
+
+      <div class="vertical-section centered" id="start">
+          <h3>Checkboxes can hide the ripple effect using the <i>noink</i> attribute</h3>
+        <demo-box>
+        <template>
+          <gun-ui-checkbox noink>Checkbox</gun-ui-checkbox>
+        </template>
+
+        </demo-box>
+      </div>  
+
+      <div class="vertical-section centered" id="start">
+        <h3>Checkboxes can be styled using custom properties</h3>
+      </div>
+      <demo-box>
+         <template>
+          <style is="custom-style">
+            gun-ui-checkbox.red {
+              --gun-ui-checkbox-checked-color: var(--paper-red-500);
+              --gun-ui-checkbox-checked-ink-color: var(--paper-red-500);
+              --gun-ui-checkbox-unchecked-color: var(--paper-red-900);
+              --gun-ui-checkbox-unchecked-ink-color: var(--paper-red-900);
+              --gun-ui-checkbox-label-color: var(--paper-red-500);
+              --gun-ui-checkbox-vertical-align: top;
+            }
+
+            gun-ui-checkbox.green {
+              align-self: center;
+              border: 1px solid var(--paper-green-200);
+              padding: 8px 16px;
+
+              --gun-ui-checkbox-checked-color: var(--paper-green-500);
+              --gun-ui-checkbox-checked-ink-color: var(--paper-green-500);
+              --gun-ui-checkbox-unchecked-color: var(--paper-green-900);
+              --gun-ui-checkbox-unchecked-ink-color: var(--paper-green-900);
+              --gun-ui-checkbox-label-color: var(--paper-green-500);
+              --gun-ui-checkbox-label-spacing: 0;
+              --gun-ui-checkbox-margin: 8px 16px 8px 0;
+              --gun-ui-checkbox-vertical-align: top;
+            }
+
+            gun-ui-checkbox.blue {
+              --gun-ui-checkbox-checked-color: var(--paper-blue-500);
+              --gun-ui-checkbox-checked-ink-color: var(--paper-blue-500);
+              --gun-ui-checkbox-unchecked-color: var(--paper-blue-900);
+              --gun-ui-checkbox-unchecked-ink-color: var(--paper-blue-900);
+              --gun-ui-checkbox-label-color: var(--paper-blue-500);
+              --gun-ui-checkbox-label-checked-color: var(--paper-blue-900);
+            }
+
+            gun-ui-checkbox .subtitle {
+              display: block;
+              font-size: 0.8em;
+              margin-top: 2px;
+              max-width: 150px;
+            }
+          </style>
+
+          <gun-ui-checkbox class="red">
+            Checkbox
+            <span class="subtitle">With a subtitle</span>
+          </gun-ui-checkbox>
+          <gun-ui-checkbox checked class="green">
+            Checkbox
+            <span class="subtitle">
+              With a longer subtitle that wraps to another line
+            </span>
+          </gun-ui-checkbox>
+          <gun-ui-checkbox class="blue">Checkbox</gun-ui-checkbox>
+        </template>
+      </demo-box>
+
+
+    </gunui-demo-app>
+  </body>
+</html>
+
+
